@@ -69,7 +69,16 @@ jobs:
           cd ../benchmark
           npm run start http://localhost:4200/
 
-          sudo lsof -t -i tcp:9999 -s tcp:listen
+          PORT=9999
+
+          PID=$(lsof -t -i:$PORT)
+
+          if [ -n "$PID" ]; then
+            echo "Killing process $PID on port $PORT"
+            kill -9 $PID
+          else
+            echo "No process found on port $PORT"
+          fi
 
       # === Svelte Benchmark ===
       - name: Benchmark Svelte
