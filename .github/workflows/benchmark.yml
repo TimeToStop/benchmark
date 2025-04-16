@@ -25,7 +25,14 @@ jobs:
           npm install
           npm run build
           npm run gen
-          
+      
+      # === Build Puppeteer
+
+      - name: Build Puppeteer
+        run: |
+          cd benchmark
+          npm install
+          npm run build
 
       # === React Benchmark ===
       - name: Build React App
