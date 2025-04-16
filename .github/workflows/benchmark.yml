@@ -69,7 +69,7 @@ jobs:
           cd ../benchmark
           npm run start http://localhost:4200/
 
-          sudo lsof -t -i tcp:9999 -s tcp:listen | sudo xargs kill
+          sudo lsof -t -i tcp:9999 -s tcp:listen
 
       # === Svelte Benchmark ===
       - name: Benchmark Svelte
