@@ -25,8 +25,11 @@ jobs:
           cd server
           pwd
           npm install
-          npm run gen
+          npm run build
           ls
+          cat ./build/gen.js
+          npm run gen
+          
 
       # === React Benchmark ===
       - name: Build React App
