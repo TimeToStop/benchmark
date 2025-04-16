@@ -35,91 +35,69 @@ jobs:
           npm install
           npm run build
 
-      # === React Benchmark ===
-      - name: Build React App
+      - name: Benchmark React
         run: |
           cd react
+          
           npm install
-          npm run build
-
-      - name: Serve and Benchmark React
-        run: |
-          cd react
           npm i -g serve
+          
+          npm run build
           serve -s build &
-          sleep 30
+          
           cd ../server
           npm run start react &
-          sleep 20
+          
+          sleep 30
+          
           cd ../benchmark
           npm run start http://localhost:3000/
 
+      # === Angular Benchmark ===
+      - name: Benchmark Angular
+        run: |
+          cd angular
+
+          npm install
+          npm run performance
+          
+          cd ../server
+          npm run start angular &
+          
+          sleep 120
+          
+          cd ../benchmark
+          npm run start http://localhost:4200/
+
+      # === Svelte Benchmark ===
+      - name: Benchmark Svelte
+        run: |
+          cd svelte
+
+          npm install
+          npm run build
+          npm run preview &
+          
+          cd ../server
+          npm run start svelte &
+          
+          sleep 40
+          npm run start http://localhost:4173/
+
+      - name: Benchmark Vanilla JS
+        run: |
+          cd ../server
+          npm run start js &
+          sleep 20
+          cd ..
+          npm run  start ./vanila/index.html
+
       # all at once
-      - name: Save React Reports
+      - name: Save Reports
         run: |
           mkdir -p public/reports
           mv server/reports/*.html public/reports/
           mv server/reports/*.csv public/reports/
-
-      # # === Angular Benchmark ===
-      # - name: Build Angular App
-      #   run: |
-      #     cd angular
-      #     npm install
-      #     npm run build --configuration production
-
-      # - name: Serve and Benchmark Angular
-      #   run: |
-      #     cd benchmark-server
-      #     npm run start -- angular-app &
-      #     sleep 5
-      #     npm run benchmark -- angular-app
-
-      # - name: Save Angular Reports
-      #   run: |
-      #     mkdir -p public/reports/angular-app
-      #     mv benchmark-server/output/*.html public/reports/angular-app/
-      #     mv benchmark-server/output/*.csv public/reports/angular-app/
-
-      # # === Svelte Benchmark ===
-      # - name: Build Svelte App
-      #   run: |
-      #     cd frameworks/svelte-app
-      #     npm install
-      #     npm run build
-
-      # - name: Serve and Benchmark Svelte
-      #   run: |
-      #     cd benchmark-server
-      #     npm run start -- svelte-app &
-      #     sleep 5
-      #     npm run benchmark -- svelte-app
-
-      # - name: Save Svelte Reports
-      #   run: |
-      #     mkdir -p public/reports/svelte-app
-      #     mv benchmark-server/output/*.html public/reports/svelte-app/
-      #     mv benchmark-server/output/*.csv public/reports/svelte-app/
-
-      # # === Vanilla JS Benchmark ===
-      # - name: Prepare Vanilla App
-      #   run: |
-      #     cd frameworks/vanilla-app
-      #     npm install || true
-      #     npm run build || true
-
-      # - name: Serve and Benchmark Vanilla
-      #   run: |
-      #     cd benchmark-server
-      #     npm run start -- vanilla-app &
-      #     sleep 5
-      #     npm run benchmark -- vanilla-app
-
-      # - name: Save Vanilla Reports
-      #   run: |
-      #     mkdir -p public/reports/vanilla-app
-      #     mv benchmark-server/output/*.html public/reports/vanilla-app/
-      #     mv benchmark-server/output/*.csv public/reports/vanilla-app/
 
       # === Dashboard & Deploy ===
       - name: Copy Dashboard HTML
