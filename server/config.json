@@ -1,0 +1,9 @@
+{
+    "dir": [ "./tests/binary", "./tests/linear" ],
+    "outFile": "benchmark",
+    "actions": ["first-render", "re-render", "node-update", "node-delete"],
+    "testsPerCase": 3,
+    "testCases": [ 
+        1000, 2000
+    ] 
+}

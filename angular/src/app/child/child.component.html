@@ -1,0 +1,8 @@
+<div *ngIf="data">
+    <app-row [data]="data"></app-row>
+    <ng-container *ngFor="let child of data.children">
+        <app-child [data]="child"></app-child>
+    </ng-container>
+</div>
+
+
