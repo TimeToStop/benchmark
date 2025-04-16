@@ -57,7 +57,7 @@ jobs:
       # all at once
       - name: Save React Reports
         run: |
-          mkdir -p public/reports/react-app
+          mkdir -p public/reports
           mv server/reports/*.html public/reports/
           mv server/reports/*.csv public/reports/
 
@@ -126,7 +126,7 @@ jobs:
         run: |
           mkdir -p public
           cp ./server/dashboard.html public/index.html
-          co ./server/dashboard.html index.html
+          cp ./server/dashboard.html index.html
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
