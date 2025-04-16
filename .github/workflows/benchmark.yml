@@ -44,6 +44,7 @@ jobs:
       - name: Serve and Benchmark React
         run: |
           cd react
+          npm i -g serve
           serve -s build &
           sleep 30
           cd ../server
