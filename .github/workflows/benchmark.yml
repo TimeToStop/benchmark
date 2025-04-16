@@ -35,23 +35,23 @@ jobs:
           npm install
           npm run build
 
-      - name: Benchmark React
-        run: |
-          cd react
+      # - name: Benchmark React
+      #   run: |
+      #     cd react
           
-          npm install
-          npm i -g serve
+      #     npm install
+      #     npm i -g serve
           
-          npm run build
-          serve -s build &
+      #     npm run build
+      #     serve -s build &
           
-          cd ../server
-          npm run start react &
+      #     cd ../server
+      #     npm run start react &
           
-          sleep 30
+      #     sleep 30
           
-          cd ../benchmark
-          npm run start http://localhost:3000/
+      #     cd ../benchmark
+      #     npm run start http://localhost:3000/
 
       # === Angular Benchmark ===
       - name: Benchmark Angular
@@ -59,12 +59,12 @@ jobs:
           cd angular
 
           npm install
-          npm run performance
+          npm run performance &
           
           cd ../server
           npm run start angular &
           
-          sleep 20
+          sleep 40
           
           cd ../benchmark
           npm run start http://localhost:4200/
