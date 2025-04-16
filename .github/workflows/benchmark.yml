@@ -125,7 +125,8 @@ jobs:
       - name: Copy Dashboard HTML
         run: |
           mkdir -p public
-          cp ./server/dashboard.html public/
+          cp ./server/dashboard.html public/index.html
+          co ./server/dashboard.html index.html
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
