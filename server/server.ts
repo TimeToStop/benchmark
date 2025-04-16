@@ -39,6 +39,7 @@ const results: Record<string, Record<string, Record<number, number[]>>> = {};
 
 app.get('/testcase/next', (req, res) => {
   if (finished) {
+    console.log('committed and exit');
     res.status(200).send("{\"finished\":true}");
     process.exit(0);
   }
@@ -84,6 +85,7 @@ app.get('/testcase/benchmark', (req, res) => {
         currentActionIndex = 0;
         currentDirIndex++;
         if (currentDirIndex >= dirs.length) {
+          console.log('done');
           finished = true;
           generateReports();
           return res.send("All benchmarks done.");

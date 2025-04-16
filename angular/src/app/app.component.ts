@@ -157,6 +157,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     fetch(next).then((r) => r.json()).then((data) => { 
       if (data.finished === true) {
+        console.log('data finished got');
         (window as any).__EXPERIMENT_DONE__ = true;
       } else {
         this.data = data;

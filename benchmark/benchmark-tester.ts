@@ -8,7 +8,7 @@ async function runBenchmark() {
     defaultViewport: null,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
-
+  
   const page = await browser.newPage();
 
   page.on('console', msg => console.log('[BROWSER]', msg.text()));
