@@ -21,9 +21,12 @@ jobs:
       # === Build Benchmark Server ===
       - name: Setup Benchmark Server
         run: |
+          pwd
           cd server
+          pwd
           npm install
           npm run gen
+          ls
 
       # === React Benchmark ===
       - name: Build React App
