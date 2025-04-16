@@ -5,8 +5,9 @@
   "main": "build/server",
   "type": "module",
   "scripts": {
-    "start": "tsc & node ./build/server.js",
-    "gen": "tsc & node ./build/gen.js"
+    "start": "node ./build/server.js",
+    "build": "tsc",
+    "gen": "node ./build/gen.js"
   },
   "keywords": [],
   "author": "",
