@@ -25,6 +25,7 @@ jobs:
           npm install
           npm run build
           npm run gen
+          mkdir -p reports
       
       # === Build Puppeteer
 
@@ -53,11 +54,13 @@ jobs:
           cd ../benchmark
           npm run start http://localhost:3000/
 
+      # all at once
+
       - name: Save React Reports
         run: |
           mkdir -p public/reports/react-app
-          mv server/reports/*.html public/reports/react-app/
-          mv server/reports/*.csv public/reports/react-app/
+          mv server/reports/*.html public/reports/
+          mv server/reports/*.csv public/reports/
 
       # # === Angular Benchmark ===
       # - name: Build Angular App

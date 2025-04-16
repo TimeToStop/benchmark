@@ -39,7 +39,6 @@ const results: Record<string, Record<string, Record<number, number[]>>> = {};
 
 app.get('/testcase/next', (req, res) => {
   if (finished) {
-    console.log('tests finished');
     res.status(200).send("{\"finished\":true}");
     process.exit(0);
   }
@@ -49,8 +48,6 @@ app.get('/testcase/next', (req, res) => {
   const testCase = testCases[currentTestCaseIndex];
   const testIndex = currentTestIndex;
 
-  console.log('/next requested');
-  console.log({dir, action,testCase, testIndex });
 
   const filename = path.join(dir, `test.${testCase}.${testIndex + 1}.json`);
   if (!fs.existsSync(filename)) {
@@ -64,7 +61,6 @@ app.get('/testcase/next', (req, res) => {
 
 app.get('/testcase/benchmark', (req, res) => {
   const time = parseFloat(req.query.time as string);
-  console.log('committing ', time);
   if (isNaN(time)) return res.status(400).send("Invalid time");
 
   const dir = dirs[currentDirIndex];
@@ -76,9 +72,6 @@ app.get('/testcase/benchmark', (req, res) => {
   if (!results[dir][action][testCase]) results[dir][action][testCase] = [];
 
   results[dir][action][testCase].push(time);
-
-  console.log(results);
-
   currentTestIndex++;
 
   if (currentTestIndex >= testsPerCase) {
@@ -98,8 +91,6 @@ app.get('/testcase/benchmark', (req, res) => {
       }
     }
   }
-
-  console.log(currentTestIndex, currentTestCaseIndex, currentActionIndex, currentDirIndex);
 
   res.send("Benchmark result saved");
 });
@@ -155,6 +146,7 @@ function generateReports() {
 
   html += `</body></html>`;
 
+  console.log('writing to ', path.join('reports', frameworkName + "-" + outFile + ".csv"));
   fs.writeFileSync(path.join('reports', frameworkName + "-" + outFile + ".csv"), csvLines.join("\n"));
   fs.writeFileSync(path.join('reports', frameworkName + "-" + outFile + ".html"), html);
 
