@@ -55,7 +55,6 @@ jobs:
           npm run start http://localhost:3000/
 
       # all at once
-
       - name: Save React Reports
         run: |
           mkdir -p public/reports/react-app
@@ -126,7 +125,7 @@ jobs:
       - name: Copy Dashboard HTML
         run: |
           mkdir -p public
-          cp dashboard.html public/
+          cp ./server/dashboard.html public/
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3

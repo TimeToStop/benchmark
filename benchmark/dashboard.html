@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmark Reports Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    h1 {
+      color: #333;
+    }
+    .tabs {
+      display: flex;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      background: #ddd;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .tab:hover {
+      background: #bbb;
+    }
+    .tab.active {
+      background: #3498db;
+      color: #fff;
+      border-color: #3498db;
+    }
+    .iframe-container {
+      margin-top: 20px;
+      display: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .iframe-container.active {
+      display: block;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .link {
+      display: block;
+      margin: 15px 0;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .link:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Benchmark Reports for Frameworks</h1>
+
+  <!-- Tab Navigation -->
+  <div class="tabs">
+    <div class="tab active" data-tab="react">React</div>
+    <div class="tab" data-tab="angular">Angular</div>
+  </div>
+
+  <!-- iFrame Container for React and Angular -->
+  <div id="react" class="iframe-container active">
+    <h2>React Benchmark Report</h2>
+    <iframe src="react_benchmark_report.html"></iframe>
+  </div>
+
+  <div id="angular" class="iframe-container">
+    <h2>Angular Benchmark Report</h2>
+    <iframe src="angular_benchmark_report.html"></iframe>
+  </div>
+
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.iframe-container');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove 'active' class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add 'active' class to the clicked tab and corresponding content
+        tab.classList.add('active');
+        const tabContent = document.getElementById(tab.getAttribute('data-tab'));
+        tabContent.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
