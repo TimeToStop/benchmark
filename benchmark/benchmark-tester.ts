@@ -22,7 +22,7 @@ async function runBenchmark() {
   try {
     await page.waitForFunction(
       'window.__EXPERIMENT_DONE__ === true',
-      { timeout: 30 * 60 * 1000 } // 30 minutes
+      { timeout: 60 * 60 * 1000 } // 1 hour
     );
     console.log('[SUCCESS] Experiment complete!');
   } catch (err) {
