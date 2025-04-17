@@ -87,7 +87,7 @@ jobs:
 
       - name: Benchmark Vanilla JS
         run: |
-          cd ../server
+          cd .server
           npm run start js &
           sleep 20
           cd ../benchmark
