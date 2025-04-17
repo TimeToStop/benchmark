@@ -54,36 +54,36 @@ jobs:
       #     npm run start http://localhost:3000/
 
       # === Angular Benchmark ===
-      - name: Benchmark Angular
-        run: |
-          cd angular
+      # - name: Benchmark Angular
+      #   run: |
+      #     cd angular
 
-          npm install
-          npm run performance &
+      #     npm install
+      #     npm run performance &
           
-          cd ../server
-          npm run start angular &
+      #     cd ../server
+      #     npm run start angular &
           
-          sleep 40
+      #     sleep 40
           
-          cd ../benchmark
-          npm run start http://localhost:4200/
+      #     cd ../benchmark
+      #     npm run start http://localhost:4200/
 
-      # === Svelte Benchmark ===
-      - name: Benchmark Svelte
-        run: |
-          cd svelte
+      # # === Svelte Benchmark ===
+      # - name: Benchmark Svelte
+      #   run: |
+      #     cd svelte
 
-          npm install
-          npm run build
-          npm run preview &
+      #     npm install
+      #     npm run build
+      #     npm run preview &
           
-          cd ../server
-          npm run start svelte &
+      #     cd ../server
+      #     npm run start svelte &
           
-          sleep 20
-          cd ../benchmark
-          npm run start http://localhost:4173/
+      #     sleep 20
+      #     cd ../benchmark
+      #     npm run start http://localhost:4173/
 
       - name: Benchmark Vanilla JS
         run: |
@@ -91,7 +91,8 @@ jobs:
           npm run start js &
           sleep 20
           cd ../benchmark
-          npm run  start ./vanila/index.html
+          echo file://${{ github.workspace }}/vanila/index.html
+          npm run  start file://${{ github.workspace }}/vanila/index.html
 
       # all at once
       - name: Save Reports
