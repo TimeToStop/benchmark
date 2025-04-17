@@ -53,7 +53,6 @@ jobs:
           cd ../benchmark
           npm run start http://localhost:3000/
 
-      === Angular Benchmark ===
       - name: Benchmark Angular
         run: |
           cd angular
@@ -68,8 +67,6 @@ jobs:
           
           cd ../benchmark
           npm run start http://localhost:4200/
-
-      # === Svelte Benchmark ===
       - name: Benchmark Svelte
         run: |
           cd svelte
