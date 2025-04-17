@@ -6,7 +6,7 @@
 
   let time = 0;
 
-  const baseUrl = "http://localhost:9999/testcase";
+  const baseUrl = "http://localhost:32145/testcase";
   const next = `${baseUrl}/next`;
   const benchmark = (time: number) => `${baseUrl}/benchmark?time=${time}`;
 
