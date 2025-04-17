@@ -57,6 +57,7 @@ app.get('/testcase/next', (req, res) => {
   const testCase = testCases[currentTestCaseIndex];
   const testIndex = currentTestIndex;
 
+  console.log(dir, action, testCase, testIndex);
 
   const filename = path.join(dir, `test.${testCase}.${testIndex + 1}.json`);
   if (!fs.existsSync(filename)) {
