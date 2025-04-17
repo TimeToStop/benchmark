@@ -91,6 +91,7 @@ jobs:
           npm run start js &
           sleep 20
           cd ..
+          pwd
           ls
           cd benchmark
           echo file://${{ github.workspace }}/vanila/index.html
