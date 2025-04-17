@@ -82,6 +82,7 @@ jobs:
           npm run start svelte &
           
           sleep 20
+          cd ../benchmark
           npm run start http://localhost:4173/
 
       - name: Benchmark Vanilla JS
@@ -89,7 +90,7 @@ jobs:
           cd ../server
           npm run start js &
           sleep 20
-          cd ..
+          cd ../benchmark
           npm run  start ./vanila/index.html
 
       # all at once
