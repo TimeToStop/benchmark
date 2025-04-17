@@ -3,11 +3,6 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 
-const PORT = 32145;
-const app = express();
-
-app.use(cors());
-
 const frameworkName = process.argv[2];
 
 if (!frameworkName) {
@@ -15,7 +10,20 @@ if (!frameworkName) {
   process.exit(1);
 }
 
+const portMap = {
+  'angular': 31230,
+  'svelte': 31231,
+  'react': 31232,
+  'js': 31233
+};
+
+const PORT = portMap[frameworkName];
+const app = express();
+
+app.use(cors());
+
 const configPath = path.resolve('config.json');
+
 if (!fs.existsSync(configPath)) {
   console.error("Missing config.json");
   process.exit(1);
