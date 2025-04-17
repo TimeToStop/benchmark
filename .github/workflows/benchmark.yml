@@ -87,15 +87,13 @@ jobs:
 
       - name: Benchmark Vanilla JS
         run: |
+          serve -s vanila &
+
           cd server
           npm run start js &
+
           sleep 20
-          cd ..
-          pwd
-          ls
-          cd benchmark
-          echo file://${{ github.workspace }}/vanila/index.html
-          npm run  start file://${{ github.workspace }}/vanila/index.html
+          npm run  start http://localhost:3000
 
       # all at once
       - name: Save Reports
