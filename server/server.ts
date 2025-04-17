@@ -41,6 +41,7 @@ app.get('/testcase/next', (req, res) => {
   if (finished) {
     console.log('committed and exit');
     res.status(200).send("{\"finished\":true}");
+    server.close();
     process.exit(0);
   }
 
@@ -155,6 +156,6 @@ function generateReports() {
   console.log("CSV and HTML reports saved.");
 }
 
-app.listen(PORT, () => {
+let server = app.listen(PORT, () => {
   console.log(`Benchmark server for ${frameworkName} is running at http://localhost:${PORT}`);
 });
