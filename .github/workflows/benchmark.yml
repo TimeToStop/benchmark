@@ -87,6 +87,7 @@ jobs:
 
       - name: Benchmark Vanilla JS
         run: |
+          npm i -g serve
           serve -s vanila &
 
           cd server
