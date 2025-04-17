@@ -85,14 +85,14 @@ jobs:
       - name: Benchmark Vanilla JS
         run: |
           npm i -g serve
-          serve -s vanila &
+          serve -s vanila -p 8123 &
 
           cd server
           npm run start js &
 
           sleep 20
           cd ../benchmark
-          npm run  start http://localhost:3000
+          npm run  start http://localhost:8123
 
       # all at once
       - name: Save Reports
@@ -107,11 +107,6 @@ jobs:
           mkdir -p public
           cp ./server/dashboard.html public/index.html
           cp ./server/dashboard.html index.html
-
-          ls
-          ls public
-          ls public/reports
-
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
