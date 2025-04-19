@@ -1,3 +1,17 @@
-<div id="data" class="data">
-  <app-child *ngIf="data?.root as root" [data]="root"></app-child>
+<div class="top-bar">
+  <h1>Framework: Angular</h1>
 </div>
+
+
+<div class="table-container">
+  <div class="table-header">
+    <div>#</div>
+    <div>Name</div>
+    <div>Description</div>
+    <div>Actions</div>
+  </div>
+  <div id="data">
+    <app-child *ngIf="data?.root as root" [data]="root"></app-child>
+  </div>
+</div>
+

@@ -1,38 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>JS</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript</title>
   <style>
-.data {
-  width: 80%;
-  margin: 0 auto;
-}
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-.data {
-  width: 100%;
-  display: inline-block;
-}
+    body {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 40px;
+    }
 
-.icon {
-  width: 45px;
-  height: 40px;
-}
+    .top-bar {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .top-bar h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    
+    .table-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .table-header, .table-row {
+      display: grid;
+      grid-template-columns: 50px 1fr 2fr 200px;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .table-header {
+      background: rgba(255, 255, 255, 0.1);
+      font-weight: 600;
+    }
+
+    .table-row:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #00b4d8;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0096c7;
+    }
+
+    .remove-btn {
+      background: #ef476f;
+    }
+
+    .remove-btn:hover {
+      background: #d93a5e;
+    }
   </style>
 </head>
-
 <body>
-  <div id="root"></div>
+  <div class="top-bar">
+    <h1>Framework: JavaScript</h1>
+  </div>
+
+  <div class="table-container">
+    <div class="table-header">
+      <div>#</div>
+      <div>Name</div>
+      <div>Description</div>
+      <div>Actions</div>
+    </div>
+    <div id="root">
+    </div>
+  </div>
   <script type="text/javascript" src="./index.js" defer></script>
 </body>
-
 </html>

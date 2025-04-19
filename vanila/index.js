@@ -27,30 +27,33 @@ function measureTime() {
 
 function renderElement(element) {
     const row = document.createElement('div');
-    // row.classList.add('container');
 
     const container = document.createElement('div');
-    container.classList.add('container');
+    container.classList.add('table-row');
 
-    const id = document.createElement('p');
-    id.classList.add('data');
+    const id = document.createElement('div');
     id.innerText = element.id.toString();
     container.appendChild(id);
-    const title = document.createElement('p');
-    title.classList.add('data');
+    const title = document.createElement('div');
     title.innerText = element.title;
     container.appendChild(title);
-    const text = document.createElement('p');
-    text.classList.add('data');
+    const text = document.createElement('div');
     text.innerText = element.text;
     container.appendChild(text);
-    // const icon = document.createElement('img');
-    // icon.width = 20;
-    // icon.src = element.icon;
-    // icon.alt = 'some icon';
-    // icon.classList.add('data');
-    // icon.classList.add('icon');
-    // row.appendChild(icon);
+
+    const buttons = document.createElement('div');
+    buttons.classList.add('action-buttons');
+
+    const add = document.createElement('button');
+    add.innerText = 'Add';
+    const del = document.createElement('button');
+    del.innerHTML = 'Remove';
+    del.classList.add('remove-btn');
+
+    buttons.appendChild(add);
+    buttons.appendChild(del);
+
+    container.appendChild(buttons);
 
     const children = document.createElement('div');
 

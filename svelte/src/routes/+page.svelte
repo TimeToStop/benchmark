@@ -36,8 +36,6 @@
     }
   }
 
-  let first = true;
-
   function updateReRender(data: INode, setData: (data: INode) => void) {
     const update = (element: INode) => {
       element.id += 123;
@@ -80,13 +78,6 @@
 
   function deleteOneNode(data: INode, setData: (data: INode) => void) {
     const isLinear = data.children?.every((child) => child.final);
-
-
-    // for (let i = 0; i < 1000000; i++) {
-    //   for (let j = 0; j < 10000; j++) {
-    //     i +j;
-    //   }
-    // }
 
     console.log('delete one node');
 
@@ -192,8 +183,72 @@
   });
 </script>
 
-{#if isLoaded }
-  <div id="root">
-    <Child data={info}></Child>
+
+
+<style>
+  :global(body) {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #fff;
+    padding: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+  }
+
+  .top-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .top-bar h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .table-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .table-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 2fr 200px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .table-header {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+  }
+</style>
+
+
+<div class="top-bar">
+  <h1>Framework: Svelte</h1>
+</div>
+
+<div class="table-container">
+  <div class="table-header">
+    <div>#</div>
+    <div>Name</div>
+    <div>Description</div>
+    <div>Actions</div>
   </div>
-{/if}
+  {#if isLoaded }
+    <div id="root">
+      <Child data={info}></Child>
+    </div>
+  {/if}
+</div>
+
+
+

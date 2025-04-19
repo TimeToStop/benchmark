@@ -51,13 +51,14 @@ jobs:
           sleep 30
           
           cd ../benchmark
-          npm run start http://localhost:3000/
+          npm run start http://localhost:3000/ headless
 
       - name: Benchmark Angular
         run: |
           cd angular
 
           npm install
+          npm run build
           npm run performance &
           
           cd ../server
@@ -66,7 +67,8 @@ jobs:
           sleep 40
           
           cd ../benchmark
-          npm run start http://localhost:4200/
+          npm run start http://localhost:4200/ headless
+
       - name: Benchmark Svelte
         run: |
           cd svelte
@@ -80,7 +82,7 @@ jobs:
           
           sleep 20
           cd ../benchmark
-          npm run start http://localhost:4173/
+          npm run start http://localhost:4173/ headless
 
       - name: Benchmark Vanilla JS
         run: |
@@ -92,7 +94,7 @@ jobs:
 
           sleep 20
           cd ../benchmark
-          npm run  start http://localhost:8123
+          npm run  start http://localhost:8123 headless
 
       # all at once
       - name: Save Reports

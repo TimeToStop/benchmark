@@ -2,8 +2,52 @@
     export let data = { id: 0, title: "", text: "", icon: "" };
 </script>
 
-<div class="container">
-    <p class="data">{data?.id}</p>
-    <p class="data">{data?.title}</p>
-    <p class="data">{data?.text}</p>
+<style>
+ .table-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 2fr 200px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .table-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #00b4d8;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #0096c7;
+  }
+
+  .remove-btn {
+    background: #ef476f;
+  }
+
+  .remove-btn:hover {
+    background: #d93a5e;
+  }
+</style>
+
+<div class="table-row">
+  <div>{data?.id}</div>
+  <div>{data?.title}</div>
+  <div>{data?.text}</div>
+  <div class="action-buttons">
+    <button>Add</button>
+    <button class="remove-btn">Remove</button>
+  </div>
 </div>

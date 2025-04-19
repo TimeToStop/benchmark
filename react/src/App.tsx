@@ -22,10 +22,10 @@ function commitTime(time: number) {
 
 function measureTime(callback: (time: number) => void) {
   console.log('measure time');
-  const data = document.getElementsByClassName('data-container')[0];
+  const data = document.getElementById('data-container');
 
-  if (!data || data?.children[1]?.children?.length === 0) {
-      window.requestAnimationFrame(() => measureTime(callback));
+  if (!data || data?.children[0]?.children?.length === 0) {
+    window.requestAnimationFrame(() => measureTime(callback));
   } else {
     setTimeout(() => {
       const ttime = performance.now() - time;
@@ -49,7 +49,7 @@ function updateReRender(data: INode, setData: (data: INode) => void) {
     element.title += 'update';
     element.text += 'called';
     element.children = element.children.map(update);
-    
+
     return element;
   };
 
@@ -69,7 +69,7 @@ function updateOneNode(data: INode, setData: (data: INode) => void) {
   } else {
     let current = data;
 
-    while(!current.final) {
+    while (!current.final) {
       const random = getRandomInt(current.children.length);
       current = current.children[random];
     }
@@ -92,7 +92,7 @@ function deleteOneNode(data: INode, setData: (data: INode) => void) {
   } else {
     let current = data;
 
-    while(!current.children[0].final) {
+    while (!current.children[0].final) {
       const random = getRandomInt(current.children.length);
       current = current.children[random];
     }
@@ -138,7 +138,7 @@ const strategies: Record<Action, IStrategy> = {
       measureTime(first ? () => deleteOneNode(data, setData) : commitTime);
     }
   }
-}; 
+};
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
@@ -169,20 +169,24 @@ function timeLog() {
 
 function Row({ data }: { data: INode }) {
   return (
-    <div className="container">
-      <p className="data">{ data?.id }</p>
-      <p className="data">{ data?.title }</p>
-      <p className="data">{ data?.text }</p>
+    <div className="table-row">
+      <div>{data?.id}</div>
+      <div>{data?.title}</div>
+      <div>{data?.text}</div>
+      <div className="action-buttons">
+        <button>Add</button>
+        <button className="remove-btn">Remove</button>
+      </div>
     </div>
   );
 }
 
 function Child({ data }: { data: INode }) {
   return (
-    <div className="data-container">
+    <div>
       <Row data={data}></Row>
       <div>
-        { data.children.map(child => <Child key={child.id} data={child}></Child>) }
+        {data.children.map(child => <Child key={child.id} data={child}></Child>)}
       </div>
     </div>
   );
@@ -239,22 +243,36 @@ function App() {
   useLayoutEffect(() => {
     console.log('update layout');
     timeLog();
-    if (loading  || data === null) return;
+    if (loading || data === null) return;
     setTimeout(() => {
       strategy?.measure(data, setData);
       first = false;
     }, 0);
   }, [loading, strategy, data, setData]);
 
-  if (loading) 
+  if (loading)
     return (<div>Loading</div>);
 
   if (data === null)
     return (<div>Error</div>);
 
   return (
-    <div className='data'>
-      <Child data={data}></Child>
+    <div>
+      <div className="top-bar">
+        <h1>Framework: React</h1>
+      </div>
+
+      <div className="table-container">
+        <div className="table-header">
+          <div>#</div>
+          <div>Name</div>
+          <div>Description</div>
+          <div>Action</div>
+        </div>
+        <div id="data-container">
+          <Child data={data} />
+        </div>
+      </div>
     </div>
   );
 }

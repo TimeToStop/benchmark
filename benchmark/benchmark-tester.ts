@@ -1,12 +1,13 @@
 import puppeteer from 'puppeteer';
 
 const URL = process.argv[2];
+const isHeadless = process.argv.includes('headless');
 
 async function runBenchmark() {
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: isHeadless,
     defaultViewport: null,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--start-maximized', '--no-sandbox', '--disable-setuid-sandbox'],
   });
   
   const page = await browser.newPage();

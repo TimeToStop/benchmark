@@ -1,15 +1,37 @@
-.container {
-    width: 100%;
+.table-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 2fr 200px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .table-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .action-buttons {
     display: flex;
-    flex-direction: row;
-}
+    gap: 10px;
+  }
 
-.data {
-    width: 100%;
-    display: inline-block;
-}
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #00b4d8;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
 
-.icon {
-    width: 45px;
-    height: 40px;
-}
+  button:hover {
+    background: #0096c7;
+  }
+
+  .remove-btn {
+    background: #ef476f;
+  }
+
+  .remove-btn:hover {
+    background: #d93a5e;
+  }
