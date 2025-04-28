@@ -48,23 +48,23 @@ try {
     npm run build
     Set-Location ..
 
-    # === React Benchmark ===
-    Write-Host "Benchmarking React"
-    Set-Location ./react
-    npm install
-    npm install -g serve
-    npm run build
-    Start-TrackedProcess "npx" "serve -s build -p 3000"
-    Set-Location ../server
-    Start-TrackedProcess "npm" "run start react"
-    Start-Sleep -Seconds 30
-    Set-Location ../benchmark
-    npm run start http://localhost:3000/
-    Stop-TrackedProcesses
-    Set-Location ..
-    Set-Location react
-    Remove-Item -r ./build
-    Set-Location ..
+    # # === React Benchmark ===
+    # Write-Host "Benchmarking React"
+    # Set-Location ./react
+    # npm install
+    # npm install -g serve
+    # npm run build
+    # Start-TrackedProcess "npx" "serve -s build -p 3000"
+    # Set-Location ../server
+    # Start-TrackedProcess "npm" "run start react"
+    # Start-Sleep -Seconds 30
+    # Set-Location ../benchmark
+    # npm run start http://localhost:3000/
+    # Stop-TrackedProcesses
+    # Set-Location ..
+    # Set-Location react
+    # Remove-Item -r ./build
+    # Set-Location ..
 
     # === Angular Benchmark ===
     Write-Host "Benchmarking Angular"
@@ -81,30 +81,30 @@ try {
     Set-Location ..
 
     # === Svelte Benchmark ===
-    Write-Host "Benchmarking Svelte"
-    Set-Location ./svelte
-    npm install
-    npm run build
-    Start-TrackedProcess "npm" "run preview"
-    Set-Location ../server
-    Start-TrackedProcess "npm" "run start svelte"
-    Start-Sleep -Seconds 20
-    Set-Location ../benchmark
-    npm run start http://localhost:4173/
-    Stop-TrackedProcesses
-    Set-Location ..
+    # Write-Host "Benchmarking Svelte"
+    # Set-Location ./svelte
+    # npm install
+    # npm run build
+    # Start-TrackedProcess "npm" "run preview"
+    # Set-Location ../server
+    # Start-TrackedProcess "npm" "run start svelte"
+    # Start-Sleep -Seconds 20
+    # Set-Location ../benchmark
+    # npm run start http://localhost:4173/
+    # Stop-TrackedProcesses
+    # Set-Location ..
 
-    # === Vanilla JS Benchmark ===
-    Write-Host "Benchmarking Vanilla JS"
-    npm install -g serve
-    Start-TrackedProcess "npx" "serve -s vanila -p 8123"
-    Set-Location ./server
-    Start-TrackedProcess "npm" "run start js"
-    Start-Sleep -Seconds 20
-    Set-Location ../benchmark
-    npm run start http://localhost:8123/
-    Stop-TrackedProcesses
-    Set-Location ..
+    # # === Vanilla JS Benchmark ===
+    # Write-Host "Benchmarking Vanilla JS"
+    # npm install -g serve
+    # Start-TrackedProcess "npx" "serve -s vanila -p 8123"
+    # Set-Location ./server
+    # Start-TrackedProcess "npm" "run start js"
+    # Start-Sleep -Seconds 20
+    # Set-Location ../benchmark
+    # npm run start http://localhost:8123/
+    # Stop-TrackedProcesses
+    # Set-Location ..
 
     # === Collect Reports ===
     Write-Host "Collecting benchmark reports"

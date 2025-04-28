@@ -160,11 +160,15 @@ export class AppComponent implements OnInit, AfterViewChecked {
         console.log('data finished got');
         (window as any).__EXPERIMENT_DONE__ = true;
       } else {
+        console.log(data.type, data.childrenAmount);
         this.data = data;
         time = performance.now();
         this.cd.detectChanges();
       }
-    }).catch((err) => console.log(err));
+    }).catch((err) => {
+      (window as any).__EXPERIMENT_DONE__ = true;
+       console.log(err); 
+    });
   }
 
   ngAfterViewChecked(): void {

@@ -71,6 +71,7 @@ function updateOneNode(data: INode, setData: (data: INode) => void) {
 
     while (!current.final) {
       const random = getRandomInt(current.children.length);
+      current.id += 100000;
       current = current.children[random];
     }
 
@@ -94,6 +95,7 @@ function deleteOneNode(data: INode, setData: (data: INode) => void) {
 
     while (!current.children[0].final) {
       const random = getRandomInt(current.children.length);
+      current.id += 100000;
       current = current.children[random];
     }
 
@@ -232,6 +234,7 @@ function App() {
         setData(testcase.root);
         setLoading(false);
       } catch (err) {
+        (window as any).__EXPERIMENT_DONE__ = true;
         setLoading(false);
         setData(null);
       }

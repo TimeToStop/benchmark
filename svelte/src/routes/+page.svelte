@@ -179,6 +179,9 @@
           });
         });
       }
+    }).catch((err) => {
+      console.error(err);
+      (window as any).__EXPERIMENT_DONE__ = true;
     });
   });
 </script>

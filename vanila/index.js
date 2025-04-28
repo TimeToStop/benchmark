@@ -96,7 +96,10 @@ function runApp() {
       } else {
         run(data.root);
       }
-    }).catch((err) => console.log(err));
+    }).catch((err) =>  { 
+      console.log(err); 
+      window.__EXPERIMENT_DONE__ = true;
+    });
 }
 
 document.addEventListener('DOMContentLoaded', runApp);

@@ -2,6 +2,8 @@
 /**/build
 /**/.vscode/**
 
+/reports*
+
 server/tests/
 server/reports/
 
