@@ -1,8 +1,11 @@
 <div *ngIf="data">
-    <app-row [data]="data"></app-row>
-    <div>
-        <app-child *ngFor="let child of data.children" [data]="child"></app-child>
-    </div>
+  <app-row [data]="data"></app-row>
+  <div>
+    <app-child 
+      *ngFor="let child of data.children; trackBy: id" 
+      [data]="child"
+    >
+    </app-child>
+  </div>
 </div>
-
 

@@ -12,5 +12,7 @@ export class ChildComponent {
   data: INode | null = null;
 
 
-  
+  id(index: number, item: INode) {
+    return item.id;
+  }
 }

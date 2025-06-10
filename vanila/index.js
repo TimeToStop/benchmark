@@ -18,7 +18,7 @@ function measureTime() {
       console.log('time = ', ttime);
       fetch(benchmark(ttime)).then((r) => {
         if (200 <= r.status && r.status < 300) {
-          setTimeout(() => window.location.reload(), 5 * 1000);
+          // setTimeout(() => window.location.reload(), 5 * 1000);
         }
       });
     }, 0);

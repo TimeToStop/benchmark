@@ -45,7 +45,7 @@ let first = true;
 
 function updateReRender(data: INode, setData: (data: INode) => void) {
   const update = (element: INode) => {
-    element.id += 123;
+    element.id += 100000;
     element.title += 'update';
     element.text += 'called';
     element.children = element.children.map(update);
